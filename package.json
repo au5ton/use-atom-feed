@@ -24,13 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/au5ton/useAtomFeed.git"
+    "url": "git+https://github.com/au5ton/use-atom-feed.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/au5ton/useAtomFeed/issues"
+    "url": "https://github.com/au5ton/use-atom-feed/issues"
   },
-  "homepage": "https://github.com/au5ton/useAtomFeed#readme"
+  "homepage": "https://github.com/au5ton/use-atom-feed#readme"
 }
