@@ -1,5 +1,7 @@
 name: Documentation
-on: [push]
+on:
+  release:
+    types: [created]
 jobs:
   build:
     name: Generate documentation
