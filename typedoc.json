@@ -1,0 +1,5 @@
+{
+  "mode": "file",
+  "includes": [ "src" ],
+  "out": "docs"
+}
