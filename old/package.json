@@ -1,0 +1,38 @@
+{
+  "name": "@au5ton/use-atom-feed",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@types/sanitize-html": "^2.3.1",
+    "sanitize-html": "^2.3.3",
+    "swr": "^0.5.6"
+  },
+  "devDependencies": {
+    "typedoc": "^0.17.8",
+    "typescript": "^4.2.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:check": "tsc --noEmit",
+    "build:docs": "typedoc",
+    "clean": "rm -r dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/au5ton/use-atom-feed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/au5ton/use-atom-feed/issues"
+  },
+  "homepage": "https://github.com/au5ton/use-atom-feed#readme"
+}
