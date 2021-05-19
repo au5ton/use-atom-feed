@@ -20,6 +20,11 @@
     "analyze": "size-limit --why",
     "docs": "typedoc"
   },
+  "dependencies": {
+    "@types/dompurify": "^2.2.2",
+    "dompurify": "^2.2.8",
+    "swr": "^0.5.6"
+  },
   "peerDependencies": {
     "react": "^17.0.2"
   },
@@ -40,11 +45,11 @@
   "size-limit": [
     {
       "path": "dist/use-atom-feed.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "15 KB"
     },
     {
       "path": "dist/use-atom-feed.esm.js",
-      "limit": "10 KB"
+      "limit": "15 KB"
     }
   ],
   "devDependencies": {
