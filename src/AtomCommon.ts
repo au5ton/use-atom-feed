@@ -22,8 +22,9 @@ export interface AtomCategory {
  * Otherwise, a base64 encoded document of the indicated media type is contained inline.
  */
 export interface AtomContent {
-  type?: string;
+  type?: AtomTextType;
   src?: string;
+  /** the value stored here should be safe, unescaped HTML that can be put anywhere */
   value: string;
 }
 

@@ -1,5 +1,5 @@
 import useSWR, { SWRConfiguration } from 'swr';
-import { parseFeed } from './Parser';
+import { parseAtomFeed } from './Parser';
 import { AtomFeed } from './AtomFeed';
 
 export interface Response<Data> {
@@ -23,7 +23,7 @@ export function useAtomFeed(feedURL: string, options?: SWRConfiguration): Respon
   if(data) {
     // attempt to decode
     try {
-      const decoded = parseFeed(data);
+      const decoded = parseAtomFeed(data);
       // return a good decode
       return {
         data: decoded,
