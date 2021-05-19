@@ -11,7 +11,6 @@
   ],
   "dependencies": {
     "@types/sanitize-html": "^2.3.1",
-    "htmlparser2": "^6.1.0",
     "sanitize-html": "^2.3.3",
     "swr": "^0.5.6"
   },

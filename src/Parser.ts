@@ -2,7 +2,6 @@ import { AtomCategory, AtomContent, AtomLink, AtomLinkRelType, AtomPerson, AtomT
 import { AtomEntry, AtomSource } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
 
-import { parseFeed } from 'htmlparser2';
 import sanitizeHtml from 'sanitize-html';
 
 /** searches for a tag in the node list, prevents recursive searches */
@@ -19,10 +18,6 @@ export function parseAtomFeed(data: string): AtomFeed {
   const parser = new DOMParser();
   const xml = parser.parseFromString(data, 'text/xml');
   const feed = findChildTag(xml, 'feed');
-
-  const foo = parseFeed(data, { xmlMode: true });
-  console.log('3rd party', foo);
-
   if(feed) {
     return {
       id: sanitizeTextContent(findChildTag(feed, 'id')) ?? '',
