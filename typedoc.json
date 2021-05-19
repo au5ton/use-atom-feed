@@ -1,5 +1,4 @@
 {
-  "mode": "file",
-  "includes": [ "src" ],
+  "entryPoints": [ "src/index.ts" ],
   "out": "docs"
 }
