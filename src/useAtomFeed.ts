@@ -1,12 +1,44 @@
 import useSWR from 'swr';
+import { parseFeed } from './Parser';
+import { AtomFeed } from './AtomFeed';
 
-export const fetcher = (url: string) => fetch(url).then(res => res.text());
+export interface Response<Data> {
+  data?: Data;
+  error?: Error;
+  isValidating: boolean;
+}
 
-export function useAtomFeed(feedURL: string) {
-  const { data, error } = useSWR(feedURL, fetcher);
+export function useAtomFeed(feedURL: string): Response<AtomFeed> {
+  const fetcher = (url: string) => fetch(url).then(res => res.text());
+  const { data, error, isValidating } = useSWR(feedURL, fetcher);
 
-  console.log(data);
-  console.log(error);
-
-  return null;
+  // if data is defined
+  if(data) {
+    // attempt to decode
+    try {
+      const decoded = parseFeed(data);
+      // return a good decode
+      return {
+        data: decoded,
+        error,
+        isValidating
+      }
+    }
+    catch(parseError) {
+      // return a decode failure
+      return {
+        data: undefined,
+        error: parseError,
+        isValidating
+      }
+    }
+  }
+  else {
+    // data is undefined
+    return {
+      data: undefined,
+      error,
+      isValidating
+    }
+  }
 }
