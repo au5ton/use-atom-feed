@@ -92,6 +92,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#atomlinkreltype" class="tsd-kind-icon">Atom<wbr>Link<wbr>Rel<wbr>Type</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#atomtexttype" class="tsd-kind-icon">Atom<wbr>Text<wbr>Type</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#customclaimnames" class="tsd-kind-icon">Custom<wbr>Claim<wbr>Names</a></li>
 							</ul>
@@ -99,8 +100,11 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#filterbytag" class="tsd-kind-icon">filter<wbr>ByTag</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#filterchildtags" class="tsd-kind-icon">filter<wbr>Child<wbr>Tags</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#findbytag" class="tsd-kind-icon">find<wbr>ByTag</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#findchildtag" class="tsd-kind-icon">find<wbr>Child<wbr>Tag</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#parsefeed" class="tsd-kind-icon">parse<wbr>Feed</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#searchfortag" class="tsd-kind-icon">search<wbr>For<wbr>Tag</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#useatomfeed" class="tsd-kind-icon">use<wbr>Atom<wbr>Feed</a></li>
 							</ul>
 						</section>
@@ -110,12 +114,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="atomlinkreltype" class="tsd-anchor"></a>
+					<h3>Atom<wbr>Link<wbr>Rel<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">Atom<wbr>Link<wbr>Rel<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"alternate"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"enclosure"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"related"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"self"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"via"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/AtomCommon.ts#L65">AtomCommon.ts:65</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="atomtexttype" class="tsd-anchor"></a>
 					<h3>Atom<wbr>Text<wbr>Type</h3>
 					<div class="tsd-signature tsd-kind-icon">Atom<wbr>Text<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"text"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"html"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"xhtml"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/AtomCommon.ts#L81">AtomCommon.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/AtomCommon.ts#L83">AtomCommon.ts:83</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">Custom<wbr>Claim<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="interfaces/customclaims.html" class="tsd-signature-type">CustomClaims</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/User.ts#L4">User.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/User.ts#L4">User.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,44 +147,83 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="parsefeed" class="tsd-anchor"></a>
-					<h3>parse<wbr>Feed</h3>
+					<a name="filterbytag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> filter<wbr>ByTag</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Feed<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a></li>
+						<li class="tsd-signature tsd-kind-icon">filter<wbr>ByTag<span class="tsd-signature-symbol">(</span>nodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCollection</span>, tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/Parser.ts#L7">Parser.ts:7</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>data: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="searchfortag" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> search<wbr>For<wbr>Tag</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>For<wbr>Tag<span class="tsd-signature-symbol">(</span>nodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCollection</span>, tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/Parser.ts#L5">Parser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/Parser.ts#L7">Parser.ts:7</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>searches for a tag in the node list, prevents the recursive searches</p>
+									<p>searches for nodes which have a matching tagName, prevents recursive searches</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>nodes: <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCollection</span></h5>
+								</li>
+								<li>
+									<h5>tagName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="filterchildtags" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> filter<wbr>Child<wbr>Tags</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">filter<wbr>Child<wbr>Tags<span class="tsd-signature-symbol">(</span>parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span>, tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/Parser.ts#L11">Parser.ts:11</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>shortcut method for <code>filterByTag()</code> that accesses children</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parent: <span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></h5>
+								</li>
+								<li>
+									<h5>tagName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="findbytag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> find<wbr>ByTag</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>ByTag<span class="tsd-signature-symbol">(</span>nodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCollection</span>, tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/Parser.ts#L5">Parser.ts:5</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>searches for a tag in the node list, prevents recursive searches</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -187,25 +240,100 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="useatomfeed" class="tsd-anchor"></a>
-					<h3>use<wbr>Atom<wbr>Feed</h3>
+					<a name="findchildtag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> find<wbr>Child<wbr>Tag</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">use<wbr>Atom<wbr>Feed<span class="tsd-signature-symbol">(</span>feedURL<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/response.html" class="tsd-signature-type">Response</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Child<wbr>Tag<span class="tsd-signature-symbol">(</span>parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span>, tagName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/useAtomFeed.ts#L11">useAtomFeed.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/Parser.ts#L9">Parser.ts:9</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>shortcut method for <code>findByTag()</code> that accesses children</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parent: <span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></h5>
+								</li>
+								<li>
+									<h5>tagName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="parsefeed" class="tsd-anchor"></a>
+					<h3>parse<wbr>Feed</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Feed<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/Parser.ts#L14">Parser.ts:14</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>parses the feed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="useatomfeed" class="tsd-anchor"></a>
+					<h3>use<wbr>Atom<wbr>Feed</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">use<wbr>Atom<wbr>Feed<span class="tsd-signature-symbol">(</span>feedURL<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">SWRConfiguration</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/response.html" class="tsd-signature-type">Response</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/5655b5c/src/useAtomFeed.ts#L18">useAtomFeed.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The React hook used for reading the Atom feed.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>feedURL: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The URL of the Atom feed</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">SWRConfiguration</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options that are passed to <code>useSWR()</code> behind the scenes.
+										More info: <a href="https://swr.vercel.app/docs/options#options">https://swr.vercel.app/docs/options#options</a></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/response.html" class="tsd-signature-type">Response</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/atomfeed.html" class="tsd-signature-type">AtomFeed</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The decoded Atom feed or any errors seen along the way</p>
 						</li>
 					</ul>
 				</section>
@@ -273,16 +401,28 @@
 						<a href="interfaces/user.html" class="tsd-kind-icon">User</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#atomlinkreltype" class="tsd-kind-icon">Atom<wbr>Link<wbr>Rel<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#atomtexttype" class="tsd-kind-icon">Atom<wbr>Text<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#customclaimnames" class="tsd-kind-icon">Custom<wbr>Claim<wbr>Names</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parsefeed" class="tsd-kind-icon">parse<wbr>Feed</a>
+						<a href="globals.html#filterbytag" class="tsd-kind-icon">filter<wbr>ByTag</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#searchfortag" class="tsd-kind-icon">search<wbr>For<wbr>Tag</a>
+						<a href="globals.html#filterchildtags" class="tsd-kind-icon">filter<wbr>Child<wbr>Tags</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#findbytag" class="tsd-kind-icon">find<wbr>ByTag</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#findchildtag" class="tsd-kind-icon">find<wbr>Child<wbr>Tag</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#parsefeed" class="tsd-kind-icon">parse<wbr>Feed</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#useatomfeed" class="tsd-kind-icon">use<wbr>Atom<wbr>Feed</a>
