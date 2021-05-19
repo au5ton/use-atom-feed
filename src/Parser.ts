@@ -1,5 +1,5 @@
-import { AtomContent, AtomLinkRelType, AtomPerson, AtomText, AtomTextType } from './AtomCommon';
-import { AtomEntry } from './AtomEntry';
+import { AtomCategory, AtomContent, AtomLink, AtomLinkRelType, AtomPerson, AtomText, AtomTextType } from './AtomCommon';
+import { AtomEntry, AtomSource } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
 
 import * as sanitizeHtml from 'sanitize-html';
@@ -21,34 +21,23 @@ export function parseAtomFeed(data: string): AtomFeed {
 
   if(feed) {
     return {
-      id: findChildTag(feed, 'id')?.textContent ?? '',
+      id: sanitizeTextContent(findChildTag(feed, 'id')) ?? '',
       title: parseAtomText(findChildTag(feed, 'title')),
       updated: new Date(findChildTag(feed, 'updated')?.textContent ?? 0),
       entries: filterChildTags(feed, 'entry').map(e => parseAtomEntry(e)),
       author: filterChildTags(feed, 'author').map(author => parseAtomPerson(author)),
-      link: filterChildTags(feed, 'link').map(link => ({
-        href: link.getAttribute('href') ?? '',
-        rel: link.getAttribute('rel') ? link.getAttribute('rel') as AtomLinkRelType : undefined,
-        type: link.getAttribute('type') ?? undefined,
-        hreflang: link.getAttribute('hreflang') ?? undefined,
-        title: link.getAttribute('title') ?? undefined,
-        length: link.getAttribute('length') ?? undefined,
-      })),
-      category: filterChildTags(feed, 'category').map(category => ({
-        term: category.getAttribute('term') ?? '',
-        scheme: category.getAttribute('scheme') ?? undefined,
-        label: category.getAttribute('label') ?? undefined
-      })),
+      link: filterChildTags(feed, 'link').map(link => parseAtomLink(link)),
+      category: filterChildTags(feed, 'category').map(category => parseAtomCategory(category)),
       contributor: filterChildTags(feed, 'contributor').map(contributor => parseAtomPerson(contributor)),
       generator: {
-        value: findChildTag(feed, 'generator')?.textContent ?? '',
-        uri: findChildTag(feed, 'generator')?.getAttribute('uri') ?? undefined,
-        version: findChildTag(feed, 'generator')?.getAttribute('version') ?? undefined
+        value: sanitizeTextContent(findChildTag(feed, 'generator')) ?? '',
+        uri: sanitizeTextAttribute(findChildTag(feed, 'generator'), 'uri'),
+        version: sanitizeTextAttribute(findChildTag(feed, 'generator'), 'version'),
       },
-      icon: findChildTag(feed, 'icon')?.textContent ?? undefined,
-      logo: findChildTag(feed, 'logo')?.textContent ?? undefined,
+      icon: sanitizeTextContent(findChildTag(feed, 'icon')),
+      logo: sanitizeTextContent(findChildTag(feed, 'logo')),
       rights: parseAtomText(findChildTag(feed, 'rights')),
-      subtitle: findChildTag(feed, 'subtitle')?.textContent ?? undefined,
+      subtitle: sanitizeTextContent(findChildTag(feed, 'subtitle')),
     };
   }
   throw Error('No <feed> tag found.');
@@ -56,38 +45,23 @@ export function parseAtomFeed(data: string): AtomFeed {
 
 export function parseAtomEntry(entry: Element): AtomEntry {
   return {
-    id: findChildTag(entry, 'id')?.textContent ?? '',
+    id: sanitizeTextContent(findChildTag(entry, 'id')) ?? '',
     title: parseAtomText(findChildTag(entry, 'title')),
     updated: new Date(findChildTag(entry, 'updated')?.textContent ?? 0),
     author: filterChildTags(entry, 'author').map(author => parseAtomPerson(author)),
-    content: parseAtomContent(findChildTag(entry, 'content')), // TODO
-    link: filterChildTags(entry, 'link').map(link => ({
-      href: link.getAttribute('href') ?? '',
-      rel: link.getAttribute('rel') ? link.getAttribute('rel') as AtomLinkRelType : undefined,
-      type: link.getAttribute('type') ?? undefined,
-      hreflang: link.getAttribute('hreflang') ?? undefined,
-      title: link.getAttribute('title') ?? undefined,
-      length: link.getAttribute('length') ?? undefined,
-    })),
+    content: parseAtomContent(findChildTag(entry, 'content')),
+    link: filterChildTags(entry, 'link').map(link => parseAtomLink(link)),
     summary: parseAtomText(findChildTag(entry, 'summary')),
-    category: filterChildTags(entry, 'category').map(category => ({
-      term: category.getAttribute('term') ?? '',
-      scheme: category.getAttribute('scheme') ?? undefined,
-      label: category.getAttribute('label') ?? undefined
-    })),
+    category: filterChildTags(entry, 'category').map(category => parseAtomCategory(category)),
     contributor: filterChildTags(entry, 'contributor').map(contributor => parseAtomPerson(contributor)),
     published: findChildTag(entry, 'published') ? new Date(findChildTag(entry, 'published')?.textContent ?? 0) : undefined,
     rights: parseAtomText(findChildTag(entry, 'rights')),
-    source: findChildTag(entry, 'source') ? {
-      id: findChildTag(findChildTag(entry, 'source')!, 'id')?.textContent ?? '',
-      title: findChildTag(findChildTag(entry, 'source')!, 'title')?.textContent ?? '',
-      updated: new Date(findChildTag(findChildTag(entry, 'source')!, 'title')?.textContent ?? 0)
-    } : undefined,
+    source: parseAtomSource(findChildTag(entry, 'source')),
   };
 }
 
 /** safely decode text content */
-export function safelyDecode(type: AtomTextType, element: Element | undefined): string {
+export function safelyDecodeAtomText(type: AtomTextType, element: Element | undefined): string {
   if(element !== undefined) {
     // If type="xhtml", then this element contains inline xhtml, wrapped in a div element.
     // This means that the existing `.innerHTML` is ready to be santized
@@ -103,28 +77,68 @@ export function safelyDecode(type: AtomTextType, element: Element | undefined): 
   return '';
 }
 
+/** shortcut for safely decoding the `.textContent` value of an element */
+export function sanitizeTextContent(element: Element | undefined): string | undefined { 
+  return element !== undefined ? sanitizeHtml(element?.textContent ?? '') : undefined;
+}
+
+/** shortcut for safely decoding the an attribute value of an element */
+export function sanitizeTextAttribute<T = string>(element: Element | undefined, attributeName: string): T | undefined  {
+  return element !== undefined ? (element.getAttribute(attributeName) !== null ? sanitizeHtml(element.getAttribute(attributeName)!) as unknown as T : undefined) : undefined;
+}
+
 export function parseAtomContent(content: Element | undefined): AtomContent {
-  const type = (content?.getAttribute('type') as AtomTextType) ?? undefined;
+  const type = (sanitizeTextAttribute(content, 'type') as AtomTextType) ?? undefined;
   return {
     type,
-    src: content?.getAttribute('src') ?? undefined,
-    value: safelyDecode(type, content),
+    src: sanitizeTextAttribute(content, 'src'),
+    value: safelyDecodeAtomText(type, content),
   }
 }
 
 
 export function parseAtomText(text: Element | undefined): AtomText {
-  const type = (text?.getAttribute('type') as AtomTextType) ?? undefined;
+  const type = (sanitizeTextAttribute(text, 'type') as AtomTextType) ?? undefined;
   return {
     type,
-    value: safelyDecode(type, text)
+    value: safelyDecodeAtomText(type, text)
   }
 }
 
 export function parseAtomPerson(person: Element): AtomPerson {
   return {
-    name: findChildTag(person, 'name')?.textContent ?? '', 
-    uri: findChildTag(person, 'uri')?.textContent ?? undefined,
-    email: findChildTag(person, 'email')?.textContent ?? undefined,
+    name: sanitizeHtml(findChildTag(person, 'name')?.textContent ?? ''),
+    uri: sanitizeTextContent(findChildTag(person, 'uri')),
+    email: sanitizeTextContent(findChildTag(person, 'email')),
   }
+}
+
+export function parseAtomLink(link: Element): AtomLink {
+  return {
+    href: sanitizeTextAttribute(link, 'href') ?? '',
+    rel: sanitizeTextAttribute<AtomLinkRelType>(link, 'ref'),
+    type: sanitizeTextAttribute(link, 'type'),
+    hreflang: sanitizeTextAttribute(link, 'hreflang'),
+    title: sanitizeTextAttribute(link, 'title'),
+    length: sanitizeTextAttribute(link, 'length'),
+  };
+}
+
+export function parseAtomCategory(category: Element): AtomCategory {
+  return {
+    term: sanitizeTextAttribute(category, 'term') ?? '',
+    scheme: sanitizeTextAttribute(category, 'scheme') ?? undefined,
+    label: sanitizeTextAttribute(category, 'label') ?? undefined
+  };
+}
+
+export function parseAtomSource(source: Element | undefined): AtomSource | undefined {
+  if(source !== undefined) {
+    return {
+      id: sanitizeTextContent(findChildTag(source, 'id')) ?? '',
+      title: sanitizeTextContent(findChildTag(source, 'title')) ?? '',
+      updated: new Date(findChildTag(source, 'title')?.textContent ?? 0)
+    };
+  }
+  return undefined;
 }
