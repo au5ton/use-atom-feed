@@ -4,6 +4,7 @@ import { AtomFeed } from './AtomFeed';
 /** searches for a tag in the node list, prevents the recursive searches */
 export const searchForTag = (nodes: Iterable<Element> | ArrayLike<Element> | HTMLCollection, tagName: string) => Array.from(nodes).find(e => e.nodeName === tagName);
 
+/** parses the feed */
 export function parseFeed(data: string): AtomFeed {
   const parser = new DOMParser();
   const xml = parser.parseFromString(data, 'text/xml');

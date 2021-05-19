@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR, { SWRConfiguration } from 'swr';
 import { parseFeed } from './Parser';
 import { AtomFeed } from './AtomFeed';
 
@@ -8,9 +8,9 @@ export interface Response<Data> {
   isValidating: boolean;
 }
 
-export function useAtomFeed(feedURL: string): Response<AtomFeed> {
+export function useAtomFeed(feedURL: string, options?: SWRConfiguration): Response<AtomFeed> {
   const fetcher = (url: string) => fetch(url).then(res => res.text());
-  const { data, error, isValidating } = useSWR(feedURL, fetcher);
+  const { data, error, isValidating } = useSWR(feedURL, fetcher, options);
 
   // if data is defined
   if(data) {
