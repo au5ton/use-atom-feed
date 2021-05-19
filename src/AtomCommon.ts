@@ -41,7 +41,7 @@ export interface AtomLink {
    * - `self`: the feed itself.
    * - `via`: the source of the information provided in the entry.
    */
-  rel?: 'alternate' | 'enclosure' | 'related' | 'self' | 'via' ;
+  rel?: AtomLinkRelType;
   /** `type` indicates the media type of the resource. */
   type?: string;
   /** `hreflang` indicates the language of the referenced resource. */
@@ -61,6 +61,8 @@ export interface AtomPerson {
   /** contains an email address for the person. */
   email?: string;
 }
+
+export type AtomLinkRelType = 'alternate' | 'enclosure' | 'related' | 'self' | 'via';
 
 /** representation of &lt;author&gt; element */
 export interface AtomAuthor extends AtomPerson {}
