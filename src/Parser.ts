@@ -2,7 +2,7 @@ import { AtomCategory, AtomContent, AtomLink, AtomLinkRelType, AtomPerson, AtomT
 import { AtomEntry, AtomSource } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
 
-import * as sanitizeHtml from 'sanitize-html';
+import sanitizeHtml from 'sanitize-html';
 
 /** searches for a tag in the node list, prevents recursive searches */
 const findByTag = (nodes: Iterable<Element> | ArrayLike<Element> | HTMLCollection, tagName: string) => Array.from(nodes).find(e => e.nodeName === tagName);
