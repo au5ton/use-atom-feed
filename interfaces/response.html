@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AtomRights | @au5ton/use-atom-feed</title>
+	<title>Response | @au5ton/use-atom-feed</title>
 	<meta name="description" content="Documentation for @au5ton/use-atom-feed">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,33 +56,29 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="atomrights.html">AtomRights</a>
+					<a href="response.html">Response</a>
 				</li>
 			</ul>
-			<h1>Interface AtomRights</h1>
+			<h1>Interface Response&lt;Data&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>representation of &lt;rights&gt; element</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>Data</h4>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="atomtext.html" class="tsd-signature-type">AtomText</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">AtomRights</span>
-							</li>
-						</ul>
+						<span class="target">Response</span>
 					</li>
 				</ul>
 			</section>
@@ -90,37 +86,46 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="atomrights.html#type" class="tsd-kind-icon">type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="atomrights.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="response.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="response.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="response.html#isvalidating" class="tsd-kind-icon">is<wbr>Validating</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="type" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../globals.html#atomtexttype" class="tsd-signature-type">AtomTextType</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="data" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type">Data</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="atomtext.html">AtomText</a>.<a href="atomtext.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/AtomCommon.ts#L77">AtomCommon.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/useAtomFeed.ts#L6">useAtomFeed.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="value" class="tsd-anchor"></a>
-					<h3>value</h3>
-					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="error" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Error</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="atomtext.html">AtomText</a>.<a href="atomtext.html#value">value</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/AtomCommon.ts#L78">AtomCommon.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/useAtomFeed.ts#L7">useAtomFeed.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isvalidating" class="tsd-anchor"></a>
+					<h3>is<wbr>Validating</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Validating<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/au5ton/use-atom-feed/blob/a25216a/src/useAtomFeed.ts#L8">useAtomFeed.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -163,21 +168,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="atomperson.html" class="tsd-kind-icon">Atom<wbr>Person</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="atomrights.html" class="tsd-kind-icon">Atom<wbr>Rights</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="atomrights.html#type" class="tsd-kind-icon">type</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="atomrights.html#value" class="tsd-kind-icon">value</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="atomsource.html" class="tsd-kind-icon">Atom<wbr>Source</a>
 					</li>
@@ -193,9 +186,24 @@
 					<li class=" tsd-kind-interface">
 						<a href="customclaims.html" class="tsd-kind-icon">Custom<wbr>Claims</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-has-type-parameter">
 						<a href="response.html" class="tsd-kind-icon">Response</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="response.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="response.html#error" class="tsd-kind-icon">error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="response.html#isvalidating" class="tsd-kind-icon">is<wbr>Validating</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="user.html" class="tsd-kind-icon">User</a>
 					</li>
