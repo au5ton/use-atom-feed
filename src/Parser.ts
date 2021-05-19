@@ -1,4 +1,5 @@
 import { AtomLinkRelType, AtomTextType } from './AtomCommon';
+import { AtomEntry } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
 
 /** searches for a tag in the node list, prevents recursive searches */
@@ -24,7 +25,7 @@ export function parseFeed(data: string): AtomFeed {
         value: findChildTag(feed, 'title')?.textContent ?? ''
       },
       updated: new Date(findChildTag(feed, 'updated')?.textContent ?? 0),
-      entries: [],
+      entries: filterChildTags(feed, 'entry').map(e => parseEntry(e)),
       author: filterChildTags(feed, 'author').map(author => ({
         name: findChildTag(author, 'name')?.textContent ?? '', 
         uri: findChildTag(author, 'uri')?.textContent ?? undefined,
@@ -63,4 +64,53 @@ export function parseFeed(data: string): AtomFeed {
     };
   }
   throw Error('No <feed> tag found.');
+}
+
+export function parseEntry(entry: Element): AtomEntry {
+  return {
+    id: findChildTag(entry, 'id')?.textContent ?? '',
+    title: {
+      type: (findChildTag(entry, 'title')?.getAttribute('type') as AtomTextType) ?? undefined,
+      value: findChildTag(entry, 'title')?.textContent ?? ''
+    },
+    updated: new Date(findChildTag(entry, 'updated')?.textContent ?? 0),
+    author: filterChildTags(entry, 'author').map(author => ({
+      name: findChildTag(author, 'name')?.textContent ?? '', 
+      uri: findChildTag(author, 'uri')?.textContent ?? undefined,
+      email: findChildTag(author, 'email')?.textContent ?? undefined,
+    })),
+    content: undefined,
+    link: filterChildTags(entry, 'link').map(link => ({
+      href: link.getAttribute('href') ?? '',
+      rel: link.getAttribute('rel') ? link.getAttribute('rel') as AtomLinkRelType : undefined,
+      type: link.getAttribute('type') ?? undefined,
+      hreflang: link.getAttribute('hreflang') ?? undefined,
+      title: link.getAttribute('title') ?? undefined,
+      length: link.getAttribute('length') ?? undefined,
+    })),
+    summary: {
+      type: (findChildTag(entry, 'summary')?.getAttribute('type') as AtomTextType) ?? undefined,
+      value: findChildTag(entry, 'summary')?.textContent ?? ''
+    },
+    category: filterChildTags(entry, 'category').map(category => ({
+      term: category.getAttribute('term') ?? '',
+      scheme: category.getAttribute('scheme') ?? undefined,
+      label: category.getAttribute('label') ?? undefined
+    })),
+    contributor: filterChildTags(entry, 'contributor').map(contributor => ({
+      name: findChildTag(contributor, 'name')?.textContent ?? '', 
+      uri: findChildTag(contributor, 'uri')?.textContent ?? undefined,
+      email: findChildTag(contributor, 'email')?.textContent ?? undefined,
+    })),
+    published: findChildTag(entry, 'published') ? new Date(findChildTag(entry, 'published')?.textContent ?? 0) : undefined,
+    rights: {
+      type: (findChildTag(entry, 'rights')?.getAttribute('type') as AtomTextType) ?? undefined,
+      value: findChildTag(entry, 'rights')?.textContent ?? ''
+    },
+    source: findChildTag(entry, 'source') ? {
+      id: findChildTag(findChildTag(entry, 'source')!, 'id')?.textContent ?? '',
+      title: findChildTag(findChildTag(entry, 'source')!, 'title')?.textContent ?? '',
+      updated: new Date(findChildTag(findChildTag(entry, 'source')!, 'title')?.textContent ?? 0)
+    } : undefined,
+  };
 }

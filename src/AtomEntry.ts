@@ -3,14 +3,14 @@
 // https://validator.w3.org/feed/docs/atom.html
 //
 
-import { AtomAuthor, AtomCategory, AtomContent, AtomContributor, AtomLink, AtomRights, AtomSummary } from './AtomCommon';
+import { AtomAuthor, AtomCategory, AtomContent, AtomContributor, AtomLink, AtomRights, AtomSummary, AtomText, AtomTitle } from './AtomCommon';
 
 /** An example of an entry would be a single post on a weblog.  */
 export interface AtomEntry {
   /** Identifies the entry using a universally unique and permanent URI. Suggestions on how to make a good id can be found here. Two entries in a feed can have the same value for id if they represent the same entry at different points in time. */
   id: string;
   /** Contains a human readable title for the entry. This value should not be blank. */
-  title: string;
+  title: AtomTitle;
   /** Indicates the last time the entry was modified in a significant way. This value need not change after a typo is fixed, only after a substantial modification. Generally, different entries in a feed will have different updated timestamps. */
   updated: Date;
   /** Names one author of the entry. An entry may have multiple authors. An entry must contain at least one author element unless there is an author element in the enclosing feed, or there is an author element in the enclosed source element. */
