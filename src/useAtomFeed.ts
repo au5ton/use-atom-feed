@@ -8,6 +8,13 @@ export interface Response<Data> {
   isValidating: boolean;
 }
 
+/**
+ * The React hook used for reading the Atom feed.
+ * @param feedURL The URL of the Atom feed
+ * @param options Options that are passed to `useSWR()` behind the scenes.
+ *  More info: https://swr.vercel.app/docs/options#options
+ * @returns The decoded Atom feed or any errors seen along the way
+ */
 export function useAtomFeed(feedURL: string, options?: SWRConfiguration): Response<AtomFeed> {
   const fetcher = (url: string) => fetch(url).then(res => res.text());
   const { data, error, isValidating } = useSWR(feedURL, fetcher, options);
