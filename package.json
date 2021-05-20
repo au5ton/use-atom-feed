@@ -24,6 +24,7 @@
   "dependencies": {
     "@types/dompurify": "^2.2.2",
     "dompurify": "^2.2.8",
+    "htmlparser2": "^6.1.0",
     "swr": "^0.5.6"
   },
   "peerDependencies": {
