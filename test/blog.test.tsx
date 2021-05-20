@@ -2,7 +2,7 @@ import { Guards, Parser } from '../src';
 import { readFileSync } from './util';
 
 describe('blog', () => {
-  const data = readFileSync('samples', 'blog.cougargrades.io', 'atom.xml');
+  const data = readFileSync('samples', 'blog.cougargrades.io', 'blog.atom.xml');
   it('parseAtomFeed', () => {
     Parser.parseAtomFeed(data);
   });
