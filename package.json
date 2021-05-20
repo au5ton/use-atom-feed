@@ -18,7 +18,8 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "generate:guards": "ts-auto-guard src/index.ts --export-all"
   },
   "dependencies": {
     "@types/dompurify": "^2.2.2",
@@ -60,6 +61,7 @@
     "react": "*",
     "react-dom": "^17.0.2",
     "size-limit": "^4.10.2",
+    "ts-auto-guard": "^1.0.0-alpha.22",
     "tsdx": "^0.14.1",
     "tslib": "^2.2.0",
     "typedoc": "^0.20.36",
