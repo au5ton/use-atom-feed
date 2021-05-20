@@ -3,7 +3,7 @@
 // https://validator.w3.org/feed/docs/atom.html
 //
 
-import { AtomAuthor, AtomCategory, AtomContent, AtomContributor, AtomLink, AtomRights, AtomSummary, AtomText, AtomTitle } from './AtomCommon';
+import { AtomAuthor, AtomCategory, AtomContent, AtomContributor, AtomLink, AtomRights, AtomSummary, AtomTitle } from './AtomCommon';
 
 /** An example of an entry would be a single post on a weblog.  */
 export interface AtomEntry {

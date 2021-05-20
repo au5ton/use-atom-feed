@@ -1,6 +1,6 @@
 # @au5ton/use-atom-feed
 
-[![npm (scoped)](https://img.shields.io/npm/v/@au5ton/use-atom-feed)](https://www.npmjs.com/@au5ton/use-atom-feed)
+[![npm](https://img.shields.io/npm/v/@au5ton/use-atom-feed)](https://www.npmjs.com/@au5ton/use-atom-feed) [![CI](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml/badge.svg)](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml)
 
 [React Hook](https://reactjs.org/docs/hooks-intro.html) for reading [Atom feeds](https://validator.w3.org/feed/docs/atom.html).
 
