@@ -1,4 +1,4 @@
-import { AtomCategory, AtomContent, AtomLink, AtomLinkRelType, AtomPerson, AtomText, AtomTextType } from './AtomCommon';
+import { AtomCategory, AtomContent, AtomLink, AtomPerson, AtomText, AtomTextType } from './AtomCommon';
 import { AtomEntry, AtomSource } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
 import * as Guards from './index.guard';
