@@ -23,7 +23,7 @@ export function parseAtomFeed(data: string): AtomFeed {
       id: sanitizeTextContent(findChildTag(feed, 'id')) ?? '',
       title: parseAtomText(findChildTag(feed, 'title')),
       updated: new Date(findChildTag(feed, 'updated')?.textContent ?? 0),
-      entries: filterChildTags(feed, 'entry').map(e => parseAtomEntry(e)).sort((a, b) => (b.updated.valueOf() - a.updated.valueOf())),
+      entries: filterChildTags(feed, 'entry').map(e => parseAtomEntry(e)).sort((a, b) => (b.updated.valueOf() - a.updated.valueOf())), // earliest are first
       author: filterChildTags(feed, 'author').map(author => parseAtomPerson(author)),
       link: filterChildTags(feed, 'link').map(link => parseAtomLink(link)),
       category: filterChildTags(feed, 'category').map(category => parseAtomCategory(category)),
