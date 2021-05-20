@@ -2,7 +2,14 @@
 
 [![npm](https://img.shields.io/npm/v/@au5ton/use-atom-feed)](https://www.npmjs.com/@au5ton/use-atom-feed) [![CI](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml/badge.svg)](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml) ![publish size](https://badgen.net/packagephobia/publish/@au5ton/use-atom-feed) ![minified + gzip](https://badgen.net/bundlephobia/minzip/@au5ton/use-atom-feed) ![dependency count](https://badgen.net/bundlephobia/dependency-count/@au5ton/use-atom-feed)
 
-[React Hook](https://reactjs.org/docs/hooks-intro.html) for reading [Atom feeds](https://validator.w3.org/feed/docs/atom.html).
+[React Hook](https://reactjs.org/docs/hooks-intro.html) and custom parser for reading [Atom feeds](https://validator.w3.org/feed/docs/atom.html).
+
+
+Included is a custom Atom feed parser: [`Parser.ts`](src/Parser.ts). If you just need to parse a feed directly, this could be useful to you. Within `test/` are some sample feeds that are used for test cases.
+
+The models for this project are adapted from the Atom standard and from the [World Wide Web Consortium](https://validator.w3.org/feed/docs/atom.html).
+
+This project is bootstrapped by [TSDX](https://github.com/formium/tsdx).
 
 ## Documentation
 
