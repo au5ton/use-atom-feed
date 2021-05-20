@@ -80,12 +80,18 @@ export function safelyDecodeAtomText(type: AtomTextType | undefined, element: El
 
 /** shortcut for safely decoding the `.textContent` value of an element */
 export function sanitizeTextContent(element: Element | undefined): string | undefined { 
-  return element !== undefined ? sanitize(element?.textContent ?? '') : undefined;
+  return element !== undefined ? sanitize(element.textContent ?? '') : undefined;
 }
 
 /** shortcut for safely decoding the an attribute value of an element */
-export function sanitizeTextAttribute<T = string>(element: Element | undefined, attributeName: string): T | undefined  {
-  return element !== undefined ? (element.getAttribute(attributeName) !== null ? sanitize(element.getAttribute(attributeName)!) as unknown as T : undefined) : undefined;
+export function sanitizeTextAttribute(element: Element | undefined, attributeName: string): string | undefined  {
+  if(element !== undefined) {
+    let attr: string | null;
+    if((attr = element.getAttribute(attributeName)) !== null) {
+      return attr;
+    }
+  }
+  return undefined;
 }
 
 export function parseAtomContent(content: Element | undefined): AtomContent {
@@ -117,9 +123,10 @@ export function parseAtomPerson(person: Element): AtomPerson {
 }
 
 export function parseAtomLink(link: Element): AtomLink {
+  const rawRel = sanitizeTextAttribute(link, 'rel');
   return {
     href: sanitizeTextAttribute(link, 'href') ?? '',
-    rel: sanitizeTextAttribute<AtomLinkRelType>(link, 'ref'),
+    rel: Guards.isAtomLinkRelType(rawRel) ? rawRel : undefined,
     type: sanitizeTextAttribute(link, 'type'),
     hreflang: sanitizeTextAttribute(link, 'hreflang'),
     title: sanitizeTextAttribute(link, 'title'),
