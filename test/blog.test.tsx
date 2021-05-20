@@ -1,4 +1,5 @@
-import { AtomAuthor, AtomLink, AtomTitle, Guards, Parser } from '../src';
+import { AtomAuthor, AtomLink, AtomTitle, Guards } from '../src';
+import * as Parser from '../src/Parser';
 import { readFileSync } from './util';
 
 describe('blog', () => {

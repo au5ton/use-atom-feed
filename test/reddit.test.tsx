@@ -1,4 +1,5 @@
-import { Guards, Parser } from '../src';
+import { Guards } from '../src';
+import * as Parser from '../src/Parser';
 import { readFileSync } from './util';
 
 describe('r_all', () => {
