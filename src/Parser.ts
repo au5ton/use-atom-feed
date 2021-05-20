@@ -1,6 +1,7 @@
 import { AtomCategory, AtomContent, AtomLink, AtomLinkRelType, AtomPerson, AtomText, AtomTextType } from './AtomCommon';
 import { AtomEntry, AtomSource } from './AtomEntry';
 import { AtomFeed } from './AtomFeed';
+import * as Guards from './index.guard';
 
 import { sanitize } from 'dompurify';
 
@@ -60,7 +61,7 @@ export function parseAtomEntry(entry: Element): AtomEntry {
 }
 
 /** safely decode text content */
-export function safelyDecodeAtomText(type: AtomTextType, element: Element | undefined): string {
+export function safelyDecodeAtomText(type: AtomTextType | undefined, element: Element | undefined): string {
   if(element !== undefined) {
     // If type="xhtml", then this element contains inline xhtml, wrapped in a div element.
     // This means that the existing `.innerHTML` is ready to be santized
@@ -72,6 +73,7 @@ export function safelyDecodeAtomText(type: AtomTextType, element: Element | unde
     // This means that the content of `.innerHTML` are **intended** to be safe.
     // However, we don't want to leave an attack vector open, so we're going to sanitize it anyway.
     else if(type === 'text') return sanitize(element.innerHTML);
+    else return sanitize(element.textContent ?? '');
   }
   return '';
 }
@@ -87,7 +89,8 @@ export function sanitizeTextAttribute<T = string>(element: Element | undefined, 
 }
 
 export function parseAtomContent(content: Element | undefined): AtomContent {
-  const type = (sanitizeTextAttribute(content, 'type') as AtomTextType) ?? undefined;
+  const rawType = sanitizeTextAttribute(content, 'type');
+  const type = Guards.isAtomTextType(rawType) ? rawType as AtomTextType : undefined; 
   return {
     type,
     src: sanitizeTextAttribute(content, 'src'),
@@ -97,7 +100,8 @@ export function parseAtomContent(content: Element | undefined): AtomContent {
 
 
 export function parseAtomText(text: Element | undefined): AtomText {
-  const type = (sanitizeTextAttribute(text, 'type') as AtomTextType) ?? undefined;
+  const rawType = sanitizeTextAttribute(text, 'type');
+  const type = Guards.isAtomTextType(rawType) ? rawType as AtomTextType : undefined; 
   return {
     type,
     value: safelyDecodeAtomText(type, text)
