@@ -62,5 +62,14 @@
     "tslib": "^2.2.0",
     "typedoc": "^0.20.36",
     "typescript": "^3.9.9"
-  }
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/au5ton/use-atom-feed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/au5ton/use-atom-feed/issues"
+  },
+  "homepage": "https://github.com/au5ton/use-atom-feed#readme"
 }
