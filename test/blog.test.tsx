@@ -20,21 +20,23 @@ describe('blog', () => {
       email: 'austinjckson@gmail.com',
       uri: undefined
     });
-    expect(feed.link).toContainEqual<AtomLink>({
-      href: 'https://blog.cougargrades.io/atom.xml',
-      rel: 'self',
-      type: undefined,
-      hreflang: undefined,
-      title: undefined,
-      length: undefined
-    });
-    expect(feed.link).toContainEqual<AtomLink>({
-      href: 'https://blog.cougargrades.io/',
-      rel: undefined,
-      type: undefined,
-      hreflang: undefined,
-      title: undefined,
-      length: undefined
-    });
+    expect(feed.link).toEqual<AtomLink[]>([
+      {
+        href: 'https://blog.cougargrades.io/atom.xml',
+        rel: 'self',
+        type: undefined,
+        hreflang: undefined,
+        title: undefined,
+        length: undefined
+      },
+      {
+        href: 'https://blog.cougargrades.io/',
+        rel: undefined,
+        type: undefined,
+        hreflang: undefined,
+        title: undefined,
+        length: undefined
+      }
+    ]);
   });
 });
