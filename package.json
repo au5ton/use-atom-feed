@@ -36,6 +36,7 @@
     "trailingComma": "es5"
   },
   "name": "@au5ton/use-atom-feed",
+  "description": "React Hook for reading Atom feeds.",
   "author": "Austin Jackson",
   "module": "dist/use-atom-feed.esm.js",
   "size-limit": [
