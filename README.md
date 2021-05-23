@@ -1,6 +1,6 @@
 # @au5ton/use-atom-feed
 
-[![npm](https://img.shields.io/npm/v/@au5ton/use-atom-feed)](https://www.npmjs.com/@au5ton/use-atom-feed) [![CI](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml/badge.svg)](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml) ![publish size](https://badgen.net/packagephobia/publish/@au5ton/use-atom-feed) ![minified + gzip](https://badgen.net/bundlephobia/minzip/@au5ton/use-atom-feed) ![dependency count](https://badgen.net/bundlephobia/dependency-count/@au5ton/use-atom-feed)
+[![npm](https://img.shields.io/npm/v/@au5ton/use-atom-feed)](https://www.npmjs.com/@au5ton/use-atom-feed) [![CI](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml/badge.svg)](https://github.com/au5ton/use-atom-feed/actions/workflows/main.yml) [![publish size](https://badgen.net/packagephobia/publish/@au5ton/use-atom-feed)](https://packagephobia.com/result?p=%40au5ton%2Fuse-atom-feed) [![minified + gzip](https://badgen.net/bundlephobia/minzip/@au5ton/use-atom-feed)](https://bundlephobia.com/result?p=@au5ton/use-atom-feed@1.0.2) [![dependency count](https://badgen.net/bundlephobia/dependency-count/@au5ton/use-atom-feed)](https://bundlephobia.com/result?p=@au5ton/use-atom-feed@1.0.2)
 
 [React Hook](https://reactjs.org/docs/hooks-intro.html) and custom parser for reading [Atom feeds](https://validator.w3.org/feed/docs/atom.html).
 
