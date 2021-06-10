@@ -16,8 +16,6 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "docs": "typedoc",
     "generate:guards": "ts-auto-guard src/index.ts --export-all"
   },
@@ -41,22 +39,10 @@
   "description": "React Hook for reading Atom feeds.",
   "author": "Austin Jackson",
   "module": "dist/use-atom-feed.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/use-atom-feed.cjs.production.min.js",
-      "limit": "20 KB"
-    },
-    {
-      "path": "dist/use-atom-feed.esm.js",
-      "limit": "20 KB"
-    }
-  ],
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.10.2",
     "husky": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "size-limit": "^4.10.2",
     "ts-auto-guard": "1.0.0-alpha.22",
     "tsdx": "^0.14.1",
     "tslib": "^2.2.0",
