@@ -1,5 +1,6 @@
 import { AtomFeed } from './AtomFeed';
 import { parseAtomFeed } from './Parser';
+//import { useState } from 'react'
 import useSWR, { SWRConfiguration } from 'swr';
 
 export interface Response<Data> {
@@ -16,8 +17,11 @@ export interface Response<Data> {
  * @returns The decoded Atom feed or any errors seen along the way
  */
 export function useAtomFeed(feedURL: string, options?: SWRConfiguration): Response<AtomFeed> {
-  const fetcher = (url: string) => fetch(url).then(res => res.text());
-  const { data, error, isValidating } = useSWR(feedURL, fetcher, options);
+  const defaultFetcher = (url: string) => fetch(url).then(res => res.text());
+  const { data, error, isValidating } = useSWR(feedURL, {
+    fetcher: options && options.fetcher ? options.fetcher : defaultFetcher,
+    ...options,
+  });
 
   // if data is defined
   if(data) {
